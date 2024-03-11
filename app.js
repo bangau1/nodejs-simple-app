@@ -1,3 +1,19 @@
+require('dotenv').config(
+  {
+    path: ['.env.local', '.env'],
+    override: true // the last value wins, so the prod config (secrets) can be injected into .env
+  }
+)
+
+const dbConn = {
+  name: process.env.DB_NAME,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  host: process.env.DB_HOST
+};
+
+console.log("db conn", dbConn)
+
 const express = require('express');
 const app = express();
 const router = express.Router();
